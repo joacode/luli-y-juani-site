@@ -25,14 +25,14 @@ const FlowersBackground: FC<FlowersBackgroundProps> = ({
     upperStyle,
     lowerStyle,
 }): ReactElement => {
-    const { isMobile } = useDeviceDetect()
+    const { isDesktop } = useDeviceDetect()
     return upper ? (
         <Background
             src="/images/flowers-upper.png"
             alt="bUpper"
             style={{
                 maxWidth: '50vw',
-                marginBottom: !isMobile ? '-320px' : '-35px',
+                marginBottom: isDesktop ? '-320px' : '-35px',
                 marginLeft: 'calc(100% - 47vw)',
                 ...upperStyle,
             }}
@@ -43,7 +43,7 @@ const FlowersBackground: FC<FlowersBackgroundProps> = ({
             alt="bLower"
             style={{
                 maxWidth: '50vw',
-                marginTop: !isMobile ? '-220px' : '970px',
+                marginTop: isDesktop ? '-220px' : '970px',
                 ...lowerStyle,
             }}
         />

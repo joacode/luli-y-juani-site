@@ -7,11 +7,12 @@ import Typography from './Typography'
 const Container = styled.div`
     position: relative;
     z-index: 2;
-    height: 100vh;
-    width: 100vw;
-    display: inline-grid;
+    height: fit-content;
+    width: fit-content;
+    display: block;
     justify-content: center;
     align-content: center;
+    // margin: auto;
 `
 
 const BannerTypography = styled(Typography)`
