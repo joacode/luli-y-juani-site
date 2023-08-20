@@ -1,4 +1,4 @@
-import React, { FC, MutableRefObject, ReactElement } from 'react'
+import React, { CSSProperties, FC, MutableRefObject, ReactElement } from 'react'
 import styled from 'styled-components'
 import { useDeviceDetect } from 'src/hooks/useDeviceDetect'
 import BannerTitle from './UI/BannerTitle'
@@ -57,11 +57,19 @@ const Banner: FC<BannerProps> = ({ banner }): ReactElement => {
         <Container ref={banner}>
             <FlowersBackground
                 upper
-                upperStyle={isDesktop ? desktopUpperStyle : upperMobileStyle}
+                upperStyle={
+                    (isDesktop
+                        ? desktopUpperStyle
+                        : upperMobileStyle) as CSSProperties
+                }
             />
             <BannerTitle />
             <FlowersBackground
-                lowerStyle={isDesktop ? desktopLowerStyle : lowerMobileStyle}
+                lowerStyle={
+                    (isDesktop
+                        ? desktopLowerStyle
+                        : lowerMobileStyle) as CSSProperties
+                }
             />
         </Container>
     )
