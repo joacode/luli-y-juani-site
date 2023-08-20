@@ -34,7 +34,7 @@ export default function MyApp(props): ReactElement {
     return (
         <>
             <Head>
-                <title>Prichu & Pepe</title>
+                <title>Luli & Juani</title>
             </Head>
             <AppContext.Provider
                 value={{

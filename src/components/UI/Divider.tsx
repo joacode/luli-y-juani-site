@@ -19,5 +19,5 @@ const Divider: FC<DividerProps> = ({ color }): ReactElement => {
 export default Divider
 
 Divider.defaultProps = {
-    color: theme.colors.pink,
+    color: theme.colors.blue.cake,
 }

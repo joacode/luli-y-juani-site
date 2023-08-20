@@ -11,7 +11,7 @@ const ImgContainer = styled.div`
 
 const Img = styled.img`
     height: 120vh;
-    width: 100vw;
+    width: 99vw;
 `
 
 const PinkBackgroundGallery: FC<{ reference: MutableRefObject<unknown> }> = ({

@@ -1,8 +1,8 @@
-import React, { FC, MutableRefObject, ReactElement, useContext } from 'react'
+import React, { FC, MutableRefObject, ReactElement } from 'react'
 import { Grid as RSGrid } from 'rsuite'
 import styled from 'styled-components'
 import { theme } from 'styles/theme'
-import AppContext from 'src/contexts/AppContext'
+import { useRouter } from 'next/router'
 import Typography from './UI/Typography'
 import Box from './UI/Box'
 import FlowersBackground from './UI/FlowersBackground'
@@ -42,7 +42,7 @@ const Container = styled.div`
     }
 
     @media (max-width: 1149px) {
-        height: 1840px;
+        height: 1700px;
     }
 `
 
@@ -75,40 +75,40 @@ const ImgContainer = styled.div`
     margin-top: -20px;
     margin-bottom: -10px;
 `
-
 const locationConfig = [
     {
         title: 'Civil',
-        path: 'https://goo.gl/maps/jDLRMzuwcYdYTSzp9',
+        path: 'https://goo.gl/maps/7Nro4d87cpXvUn4Y7',
         dressCode: 'Smart Casual',
         img: '/images/heart-test.png',
-        address: 'Av. Centenario 1',
+        address: 'Av. Centenario 77,',
         location: 'San Isidro',
-        name: 'Plaza Municipal Yrigoyen',
-        date: '16 FEB 2023 14:15 hs',
-        marginText: '*Festejo en Casa Catedral hasta las 00 hs',
+        name: 'Registro civil de San Isidro',
+        date: '03.11.23 13:30 hs',
+        marginText: '*Recepción civil: Catamarca 724, Acassuso',
+        style: { width: '150px' },
         containerStyle: { marginBottom: '90px' },
     },
     {
         title: 'Ceremonia',
-        path: 'https://goo.gl/maps/hfeVJ26sVMSW6KRv8',
+        path: 'https://goo.gl/maps/AQNc9GyyRAhPqaZr7',
         dressCode: 'Elegante',
         img: '/images/rings.png',
-        address: 'Libertador 17115',
-        location: 'Béccar',
-        name: 'Capilla del Colegio Marin',
-        date: '25 FEB 2023 15:30 hs',
+        address: 'Urquiza y Albarellos,',
+        location: 'Acassuso',
+        name: 'Parroquia Niño Jesús de Praga',
+        date: '11.11.2023 15:30 hs',
         style: { width: '180px' },
     },
     {
-        title: 'Fiesta',
-        path: 'https://goo.gl/maps/mpc6NxaBZ7pQ8ikd9',
+        title: 'Party',
+        path: 'https://goo.gl/maps/DBK8KowDvMNRBesx6',
         dressCode: 'Elegante',
         img: '/images/partytest.png',
-        address: 'Anchorena 477',
-        location: 'San Isidro',
-        name: 'Quinta de Anchorena',
-        date: '25 FEB 2023 17:00 hs',
+        address: 'Juan Díaz de Solís 1970,',
+        location: 'Olivos',
+        name: 'Salon del Río',
+        date: '11.11.2023 18:00 hs',
     },
 ]
 
@@ -117,11 +117,11 @@ interface EventsProps {
 }
 
 const Events: FC<EventsProps> = ({ events }): ReactElement => {
-    const { windowDimensions } = useContext(AppContext)
+    const router = useRouter()
     return (
         <Container ref={events}>
-            <FlowersBackground />
-            <PageTitle title="EVENTOS" />
+            <FlowersBackground upper />
+            <PageTitle title="EVENTOS" style={{ marginTop: '65px' }} />
             <Grid style={{ zIndex: 1 }}>
                 {locationConfig.map(location => {
                     return (
@@ -129,7 +129,7 @@ const Events: FC<EventsProps> = ({ events }): ReactElement => {
                             <BoxTitleContainer>
                                 <Typography
                                     variant="bannerTitle"
-                                    color={theme.colors.pink}
+                                    color={theme.colors.blue.cake}
                                     style={{
                                         width: 'fit-content',
                                         fontSize: 20,
@@ -148,7 +148,7 @@ const Events: FC<EventsProps> = ({ events }): ReactElement => {
                                     marginLeft: 'auto',
                                     marginRight: 'auto',
                                     marginTop: '10px',
-                                    width: '90px',
+                                    width: '130px',
                                     textAlign: 'center',
                                 }}
                             >
@@ -165,7 +165,7 @@ const Events: FC<EventsProps> = ({ events }): ReactElement => {
                                     textAlign: 'center',
                                 }}
                             >
-                                {`DRESS CODE: ${location.dressCode.toUpperCase()}`}
+                                {`Dress code: ${location.dressCode}`}
                             </Typography>
                             <ImgContainer>
                                 <Img
@@ -183,8 +183,9 @@ const Events: FC<EventsProps> = ({ events }): ReactElement => {
                                         marginLeft: 'auto',
                                         marginRight: 'auto',
                                     }}
+                                    variant="italic"
                                 >
-                                    {location.name.toUpperCase()}
+                                    {location.name}
                                 </Typography>
                                 <Typography
                                     style={{
@@ -193,11 +194,12 @@ const Events: FC<EventsProps> = ({ events }): ReactElement => {
                                         marginLeft: 'auto',
                                         marginRight: 'auto',
                                         marginTop: '10px',
-                                        width: '125px',
+                                        width: '165px',
                                         textAlign: 'center',
                                     }}
+                                    variant="italic"
                                 >
-                                    {location.address.toUpperCase()}
+                                    {location.address}
                                 </Typography>
                                 <Typography
                                     style={{
@@ -208,8 +210,9 @@ const Events: FC<EventsProps> = ({ events }): ReactElement => {
                                         width: '125px',
                                         textAlign: 'center',
                                     }}
+                                    variant="italic"
                                 >
-                                    {location.location.toUpperCase()}
+                                    {location.location}
                                 </Typography>
                                 <a
                                     href={location.path}
@@ -231,34 +234,30 @@ const Events: FC<EventsProps> = ({ events }): ReactElement => {
                                         VER MAPA
                                     </Typography>
                                 </a>
-                                {location.marginText && (
-                                    <Typography
-                                        style={{
-                                            fontSize: '13px',
-                                            fontWeight: 500,
-                                            width: 'fit-content',
-                                            textAlign: 'center',
-                                            color: 'black',
-                                            position: 'absolute',
-                                            marginTop: '26px',
-                                            marginLeft: '10px',
-                                            opacity: 0.6,
-                                        }}
-                                    >
-                                        {location.marginText}
-                                    </Typography>
-                                )}
+                                {router.pathname === '/guests' &&
+                                    location.marginText && (
+                                        <Typography
+                                            style={{
+                                                fontSize: '13px',
+                                                fontWeight: 500,
+                                                width: 'fit-content',
+                                                textAlign: 'center',
+                                                color: 'black',
+                                                position: 'absolute',
+                                                marginTop: '26px',
+                                                marginLeft: '10px',
+                                                opacity: 0.6,
+                                            }}
+                                        >
+                                            {location.marginText}
+                                        </Typography>
+                                    )}
                             </div>
                         </Box>
                     )
                 })}
-                {windowDimensions.width <= 1024 && (
-                    <FlowersBackground top="199vh" />
-                )}
-                {windowDimensions.width <= 768 && (
-                    <FlowersBackground top="300vh" />
-                )}
             </Grid>
+            <FlowersBackground />
         </Container>
     )
 }

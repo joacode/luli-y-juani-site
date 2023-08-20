@@ -1,16 +1,10 @@
-import React, {
-    FC,
-    MutableRefObject,
-    ReactElement,
-    useContext,
-    useState,
-} from 'react'
+import React, { FC, MutableRefObject, ReactElement, useState } from 'react'
 import { FlexboxGrid } from 'rsuite'
 import Typography from 'src/components/UI/Typography'
 import styled from 'styled-components'
 import { theme } from 'styles/theme'
 import MenuIcon from '@rsuite/icons/Menu'
-import AppContext from 'src/contexts/AppContext'
+import { useDeviceDetect } from 'src/hooks/useDeviceDetect'
 
 const Container = styled.div<{ display: boolean }>`
     width: 100vw;
@@ -72,7 +66,7 @@ const Header: FC<HeaderProps> = ({
     gallery,
     display,
 }): ReactElement => {
-    const { windowDimensions } = useContext(AppContext)
+    const { isDesktop } = useDeviceDetect()
     const [showMenu, setShowMenu] = useState(false)
 
     const labels = [
@@ -86,7 +80,7 @@ const Header: FC<HeaderProps> = ({
     return (
         <>
             <Container display={display}>
-                {windowDimensions.width <= 1010 ? (
+                {!isDesktop ? (
                     <>
                         <MenuIcon
                             style={{ marginLeft: '2rem' }}
@@ -118,7 +112,7 @@ const Header: FC<HeaderProps> = ({
                 ) : (
                     <FlexboxGrid
                         justify="space-around"
-                        style={{ width: '60vw' }}
+                        style={{ width: '65vw' }}
                     >
                         {labels.map(l => (
                             <FlexboxGrid.Item>

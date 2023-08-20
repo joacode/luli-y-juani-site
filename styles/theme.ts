@@ -3,6 +3,7 @@ export const theme = {
         blue: {
             light: '#d6efff',
             normal: '#8ed2ff',
+            cake: '#82aed7',
         },
         green: '#aeffb4',
         grey: '#403e59',
@@ -15,8 +16,7 @@ export const theme = {
         pink: '#e35c84',
         pinkLight: 'rgba(227, 92, 132, .4)',
         black: 'rgb(51, 51, 51)',
-        background: '#e7e2db',
+        background: '#fff',
         header: '#99c1e6',
-        giftCardHover: '#82aed7',
     },
 }

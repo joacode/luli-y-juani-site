@@ -1,15 +1,13 @@
-import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+import React from 'react'
+import MainPage from 'src/components/MainPage'
 import Layout from '../src/components/UI/Layout/Layout'
 
 function HomePage(): JSX.Element {
-    const router = useRouter()
-
-    useEffect(() => {
-        router.push('/guests')
-    }, [router])
-
-    return <Layout loading />
+    return (
+        <Layout>
+            <MainPage />
+        </Layout>
+    )
 }
 
 export default HomePage

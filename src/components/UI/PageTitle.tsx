@@ -30,7 +30,7 @@ const PageTitle: FC<PageTitleProps> = ({
                 color={
                     color === theme.colors.white.normal
                         ? color
-                        : theme.colors.pink
+                        : theme.colors.blue.cake
                 }
             />
         </div>

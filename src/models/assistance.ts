@@ -11,4 +11,5 @@ export enum PartyAssistance {
     CEREMONY = 'CEREMONY',
     DONT = 'DONT',
     EMPTY = 'EMPTY',
+    PARTY = 'PARTY',
 }

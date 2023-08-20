@@ -13,17 +13,20 @@ interface TypographyProps {
 
 const Container = styled.div<{ variant: string }>`
     font-family: ${({ variant }): string => {
-        if (variant === 'bannerTitle') {
-            return 'haboro-contrast-normal, sans-serif'
+        if (variant === 'name') {
+            return `Amelia_Giovani`
         }
-        if (variant === 'itinerary') {
-            return `'GFS Didot', serif`
-        }
-        return `'Montserrat', sans-serif`
+        return `'Libre Baskerville', serif`
     }};
     font-size: ${({ variant }): string => {
         if (variant === 'bannerTitle') {
-            return '63px'
+            return '90px'
+        }
+        if (variant === 'gifts') {
+            return '18px'
+        }
+        if (variant === 'bank-data') {
+            return '16px'
         }
         return '34px'
     }};
@@ -36,8 +39,16 @@ const Container = styled.div<{ variant: string }>`
         if (variant === 'bannerTitle' || variant === 'bannerSubtitle') {
             return `${theme.colors.white.normal}`
         }
-        return `${theme.colors.black}`
+        return `${theme.colors.grey}`
     }};
+    font-style: ${({ variant }): string => {
+        if (variant === 'italic') {
+            return 'italic'
+        }
+        return 'initial'
+    }};
+    ${({ variant }): string =>
+        variant === 'gifts' ? `margin-bottom: 10px;` : ''}
 `
 
 const Typography: FC<TypographyProps> = ({

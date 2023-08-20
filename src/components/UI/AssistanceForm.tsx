@@ -11,12 +11,19 @@ import { SpecialMenu } from 'src/models/specialMenu'
 import { useRouter } from 'next/router'
 import { CivilAssistance, PartyAssistance } from 'src/models/assistance'
 import { GuestsService } from 'src/services/guestsService'
+import {
+    civilAssistanceData,
+    filteredCivilAssistanceData,
+    partyAssistanceData,
+} from 'src/constants/assistance'
+import { specialMenu } from 'src/constants/menu'
 import SelectItem from './SelectItem'
 import Button from './Button'
 import InputItem from './InputItem'
 import { ChangeGuest, GuestInterface } from '../../models/guest'
 import AppContext from '../../contexts/AppContext'
 import { addGuestMessage } from './message'
+import Typography from './Typography'
 
 const Container = styled.div`
     width: 100%;
@@ -33,32 +40,6 @@ const UpperContainer = styled.div`
     display: flex;
     justify-content: space-between;
 `
-
-const civilAssistanceData = [
-    {
-        label: 'Voy a la ceremonia y al festejo',
-        value: CivilAssistance.ALL,
-    },
-    { label: 'Voy solo a la ceremonia', value: CivilAssistance.CEREMONY },
-    { label: 'Voy solo al festejo', value: CivilAssistance.PARTY },
-    { label: 'No voy a poder ir', value: CivilAssistance.DONT },
-]
-
-const partyAssistanceData = [
-    {
-        label: 'Voy a la ceremonia y al festejo',
-        value: PartyAssistance.ALL,
-    },
-    { label: 'Voy solo a la ceremonia', value: PartyAssistance.CEREMONY },
-    { label: 'No voy a poder ir', value: PartyAssistance.DONT },
-]
-
-const specialMenu = [
-    { label: '¡Como de todo!', value: SpecialMenu.DEFAULT },
-    { label: 'Sin TACC', value: SpecialMenu.COELIAC },
-    { label: 'Go Vegan!', value: SpecialMenu.VEGAN },
-    { label: 'Veggie Baby', value: SpecialMenu.VEGGIE },
-]
 
 const AssistanceForm: FC = (): ReactElement => {
     const router = useRouter()
@@ -140,14 +121,18 @@ const AssistanceForm: FC = (): ReactElement => {
                 <SelectItem
                     label="Confirmar asistencia al Civil"
                     onChange={changeGuest}
-                    placeholder="Asistencia 16 de Febrero"
-                    data={civilAssistanceData}
+                    placeholder="Asistencia 3 de Noviembre"
+                    data={
+                        router.pathname === '/guests'
+                            ? civilAssistanceData
+                            : filteredCivilAssistanceData
+                    }
                     keyName="civilAssistance"
                 />
                 <SelectItem
                     label="Confirmar asistencia a la Iglesia y Fiesta"
                     onChange={changeGuest}
-                    placeholder="Asistencia 25 de Febrero"
+                    placeholder="Asistencia 11 de Noviembre"
                     data={partyAssistanceData}
                     keyName="partyAssistance"
                 />
@@ -167,14 +152,23 @@ const AssistanceForm: FC = (): ReactElement => {
             </div>
             <div style={{ padding: 15 }}>
                 <Button
-                    appearance="primary"
-                    style={{
-                        background: theme.colors.pink,
-                    }}
+                    background={theme.colors.header}
                     onClick={onSubmit}
                     loading={loading}
+                    style={{
+                        width: '200px',
+                        height: '60px',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        display: 'block',
+                    }}
                 >
-                    ENVIAR
+                    <Typography
+                        color={theme.colors.white.normal}
+                        style={{ fontSize: '18px' }}
+                    >
+                        ENVIAR
+                    </Typography>
                 </Button>
             </div>
         </Container>

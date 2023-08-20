@@ -1,10 +1,19 @@
-import React, { ReactElement, FC, MutableRefObject, useContext } from 'react'
+import React, {
+    ReactElement,
+    FC,
+    MutableRefObject,
+    useContext,
+    useState,
+} from 'react'
 import styled from 'styled-components'
 import { theme } from 'styles/theme'
 import AppContext from 'src/contexts/AppContext'
+import { Modal } from 'rsuite'
 import Typography from './UI/Typography'
 import PinkBackground from './UI/PinkBackground'
 import PageTitle from './UI/PageTitle'
+import Button from './UI/Button'
+import Divider from './UI/Divider'
 
 const Container = styled.div`
     overflow: hidden;
@@ -14,50 +23,14 @@ const Container = styled.div`
     position: relative;
 `
 
-const A = styled.a`
-    margin: 0 0.7rem;
-    font-family: Josefin Sans, sans-serif !important;
-    font-size: 0.8rem;
-    letter-spacing: 0.13rem;
-    width: 160px;
-    height: 60px;
-    padding-bottom: 0.18rem;
-    padding-top: 0.43rem;
-    text-transform: uppercase !important;
-    background: ${theme.colors.header};
-    color: ${theme.colors.white.normal};
-    font-weight: bold;
-    margin-left: auto;
-    margin-right: auto;
-    transition-duration: 0.25s, 0.25s, 0.25s, 0.25s;
-    border-radius: 0.4rem;
-
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-content: center;
-
-    &:hover {
-        text-decoration: none;
-        background: ${theme.colors.giftCardHover};
-        color: white;
-        transition-duration: 0.25s, 0.25s, 0.25s, 0.25s;
-    }
-
-    &:focus {
-        text-decoration: none;
-        background: ${theme.colors.giftCardHover};
-        color: white;
-        transition-duration: 0.25s, 0.25s, 0.25s, 0.25s;
-    }
-`
-
 interface GiftsProps {
     gifts: MutableRefObject<unknown>
 }
 
 const Gifts: FC<GiftsProps> = ({ gifts }): ReactElement => {
     const { windowDimensions } = useContext(AppContext)
+    const [openBankModal, setOpenBankModal] = useState(false)
+
     return (
         <>
             <PinkBackground reference={gifts} />
@@ -87,16 +60,68 @@ const Gifts: FC<GiftsProps> = ({ gifts }): ReactElement => {
                         fontWeight: 400,
                     }}
                 >
-                    Compartir este momento con vos es el mejor regalo. Gracias
-                    por acompañarnos.
+                    Si nos querés ayudar a irnos de Luna de Miel, acá te decimos
+                    cómo:
                 </Typography>
-                <A
-                    href="https://confites.com/pareja/prichuypepe/regalar"
-                    target="_blank"
+                <Button
+                    onClick={(): void => setOpenBankModal(true)}
+                    background={theme.colors.header}
+                    style={{
+                        width: '200px',
+                        height: '60px',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        display: 'block',
+                    }}
                 >
-                    VER LISTA
-                </A>
+                    <Typography
+                        color={theme.colors.white.normal}
+                        style={{ fontSize: '24px' }}
+                    >
+                        Regalo
+                    </Typography>
+                </Button>
             </Container>
+
+            {openBankModal && (
+                <Modal
+                    open={openBankModal}
+                    onClose={(): void => setOpenBankModal(false)}
+                >
+                    <Modal.Title>
+                        <Typography style={{ fontSize: '24px' }}>
+                            Gracias por ayudarnos!!
+                        </Typography>
+                    </Modal.Title>
+                    <Modal.Body>
+                        <Typography variant="gifts">
+                            Podes acercarnos tu regalo en un sobre cuando
+                            quieras. El día de la ceremonia también habrá una
+                            caja para recibirlos.
+                        </Typography>
+                        <Typography variant="gifts">
+                            Si estás full bancarizado, te dejamos los datos de
+                            la cuenta:
+                        </Typography>
+                        <Divider color={theme.colors.header} />
+                        <Typography variant="bank-data">
+                            Banco Galicia
+                        </Typography>
+                        <Typography variant="bank-data">
+                            LUCILA SANDRI
+                        </Typography>
+                        <Typography variant="bank-data">
+                            CTA: 4020484-6 048-2
+                        </Typography>
+                        <Typography variant="bank-data">
+                            CBU: 00700481-30004020484621
+                        </Typography>
+                        <Typography variant="bank-data">
+                            ALIAS: JUANIYLULI
+                        </Typography>
+                    </Modal.Body>
+                </Modal>
+            )}
         </>
     )
 }

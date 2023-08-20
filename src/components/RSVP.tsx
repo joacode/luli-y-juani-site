@@ -1,9 +1,7 @@
-import React, { MutableRefObject, ReactElement, FC, useContext } from 'react'
-import AppContext from 'src/contexts/AppContext'
+import React, { MutableRefObject, ReactElement, FC } from 'react'
 import styled from 'styled-components'
 import AssistanceForm from './UI/AssistanceForm'
 import FlowersBackground from './UI/FlowersBackground'
-import InstagramSection from './UI/InstagramSection'
 import PageTitle from './UI/PageTitle'
 
 const Container = styled.div`
@@ -12,13 +10,14 @@ const Container = styled.div`
     height: 100vh;
 
     @media (max-width: 768px) {
-        height: 1501px;
+        height: 1000px;
     }
 `
 
 const BottomContainer = styled.div`
     display: flex;
     width: 78vw;
+    max-width: fit-content;
     margin-left: auto;
     margin-right: auto;
     margin-top: 45px;
@@ -50,17 +49,14 @@ interface RSVPProps {
 }
 
 const RSVP: FC<RSVPProps> = ({ rsvp }): ReactElement => {
-    const { windowDimensions } = useContext(AppContext)
-
     return (
         <Container ref={rsvp} id="rsvp">
-            <FlowersBackground />
+            <FlowersBackground upper />
             <PageTitle title="RSVP" />
             <BottomContainer>
                 <AssistanceForm />
-                <InstagramSection />
             </BottomContainer>
-            {windowDimensions.width <= 768 && <FlowersBackground top="610vh" />}
+            <FlowersBackground lowerStyle={{ marginBottom: '-30px' }} />
         </Container>
     )
 }

@@ -1,13 +1,19 @@
-import React, { CSSProperties, FC, ReactElement, ReactNode } from 'react'
+/* eslint-disable react/require-default-props */
+import React, {
+    CSSProperties,
+    FC,
+    PropsWithChildren,
+    ReactElement,
+} from 'react'
 import { Button as RSuiteButton } from 'rsuite'
 import styled from 'styled-components'
 
-interface ButtonProps {
-    children: ReactNode
+interface ButtonProps extends PropsWithChildren {
     onClick: (e: React.MouseEvent) => void
     style?: CSSProperties
-    appearance: 'default' | 'primary' | 'link' | 'subtle' | 'ghost'
-    color?: 'red' | 'orange' | 'yellow' | 'green' | 'cyan' | 'blue' | 'violet'
+    appearance?: 'default' | 'primary' | 'link' | 'subtle' | 'ghost'
+    color?: CSSProperties['color']
+    background?: CSSProperties['color']
     loading?: boolean
 }
 
@@ -29,13 +35,13 @@ const Button: FC<ButtonProps> = ({
     appearance,
     children,
     color,
+    background,
     loading,
 }): ReactElement => {
     return (
         <StyledButton
             appearance={appearance}
-            style={style}
-            color={color}
+            style={{ ...style, background, color }}
             onClick={onClick}
             loading={loading}
         >
@@ -45,9 +51,3 @@ const Button: FC<ButtonProps> = ({
 }
 
 export default Button
-
-Button.defaultProps = {
-    style: null,
-    color: 'blue',
-    loading: false,
-}

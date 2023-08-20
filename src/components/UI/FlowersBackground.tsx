@@ -1,26 +1,52 @@
-import React, { FC, ReactElement } from 'react'
+/* eslint-disable react/require-default-props */
+import React, {
+    CSSProperties,
+    FC,
+    ReactElement,
+    PropsWithChildren,
+} from 'react'
+import { useDeviceDetect } from 'src/hooks/useDeviceDetect'
 import styled from 'styled-components'
 
 const Background = styled.img`
-    position: absolute;
-    height: 100vh;
+    width: inital;
+    height: initial;
 `
 
+interface FlowersBackgroundProps extends PropsWithChildren {
+    upper?: boolean
+    upperStyle?: CSSProperties
+    lowerStyle?: CSSProperties
+}
+
 // eslint-disable-next-line react/require-default-props
-const FlowersBackground: FC<{ top?: string }> = ({ top }): ReactElement => {
-    return (
-        <>
-            <Background
-                src="/images/flowers.png"
-                alt="bLeft"
-                style={{ left: 0, top }}
-            />
-            <Background
-                src="/images/flowers.png"
-                alt="bRight"
-                style={{ transform: 'rotate(180deg)', right: 0, top }}
-            />
-        </>
+const FlowersBackground: FC<FlowersBackgroundProps> = ({
+    upper = false,
+    upperStyle,
+    lowerStyle,
+}): ReactElement => {
+    const { isMobile } = useDeviceDetect()
+    return upper ? (
+        <Background
+            src="/images/flowers-upper.png"
+            alt="bUpper"
+            style={{
+                maxWidth: '50vw',
+                marginBottom: !isMobile ? '-320px' : '-35px',
+                marginLeft: 'calc(100% - 47vw)',
+                ...upperStyle,
+            }}
+        />
+    ) : (
+        <Background
+            src="/images/flowers-lower.png"
+            alt="bLower"
+            style={{
+                maxWidth: '50vw',
+                marginTop: !isMobile ? '-220px' : '970px',
+                ...lowerStyle,
+            }}
+        />
     )
 }
 

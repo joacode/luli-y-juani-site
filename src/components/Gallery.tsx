@@ -62,21 +62,17 @@ interface GalleryProps {
 }
 
 const imgConfig = [
-    'IMG_0005.jpeg',
-    'IMG_0001.jpeg',
-    'IMG_0002.jpeg',
-    'IMG_0003.jpeg',
-    'IMG_0030.jpeg',
-    'IMG_0374.jpeg',
-    'IMG_0411.jpeg',
-    'IMG_1500.jpeg',
-    'IMG_2407.jpeg',
-    'IMG_2553.jpeg',
-    'IMG_4674.jpeg',
-    'IMG_4988.jpeg',
-    'IMG_5053.jpeg',
-    'IMG_6711.jpeg',
-    'IMG_8460.jpeg',
+    '4aac6242-c25c-4a03-9473-ec5055af6c43.jpg',
+    '10c9b644-db7c-47a6-b54a-04b8c919af0c.jpg',
+    '93fccf22-475c-4f0f-aacf-82a49f5c26f4.jpg',
+    '20151216_194953_Original.jpg',
+    'IMG_0856.jpg',
+    'IMG_1187.jpg',
+    'IMG_1511.jpg',
+    'IMG_3169.jpg',
+    'IMG_4342.jpg',
+    'IMG_7762.jpg',
+    'IMG_20171209_185013.jpg',
 ]
 
 const Gallery: FC<GalleryProps> = ({ gallery }): ReactElement => {

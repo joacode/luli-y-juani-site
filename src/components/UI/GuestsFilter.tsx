@@ -1,9 +1,12 @@
 import React, { FC, ReactElement, useState } from 'react'
 import styled from 'styled-components'
-import { CivilAssistance, PartyAssistance } from 'src/models/assistance'
-import { SpecialMenu } from 'src/models/specialMenu'
 import { useRouter } from 'next/router'
 import { theme } from 'styles/theme'
+import { specialMenu } from 'src/constants/menu'
+import {
+    civilAssistanceData,
+    partyAssistanceData,
+} from 'src/constants/assistance'
 import Button from './Button'
 import { ChangeGuest, GuestFilter, GuestInterface } from '../../models/guest'
 import InputItem from './InputItem'
@@ -27,32 +30,6 @@ interface GuestsFilterProps {
     filteredGuests: GuestInterface[]
     setFilteredGuests: (g: GuestInterface[]) => void
 }
-
-const civilAssistanceData = [
-    {
-        label: 'Voy a la ceremonia y al festejo',
-        value: CivilAssistance.ALL,
-    },
-    { label: 'Voy solo a la ceremonia', value: CivilAssistance.CEREMONY },
-    { label: 'Voy solo al festejo', value: CivilAssistance.PARTY },
-    { label: 'No voy a poder ir', value: CivilAssistance.DONT },
-]
-
-const partyAssistanceData = [
-    {
-        label: 'Voy a la ceremonia y al festejo',
-        value: PartyAssistance.ALL,
-    },
-    { label: 'Voy solo a la ceremonia', value: PartyAssistance.CEREMONY },
-    { label: 'No voy a poder ir', value: PartyAssistance.DONT },
-]
-
-const specialMenu = [
-    { label: '¡Como de todo!', value: SpecialMenu.DEFAULT },
-    { label: 'Sin TACC', value: SpecialMenu.COELIAC },
-    { label: 'Go Vegan!', value: SpecialMenu.VEGAN },
-    { label: 'Veggie Baby', value: SpecialMenu.VEGGIE },
-]
 
 const GuestsFilter: FC<GuestsFilterProps> = ({
     filteredGuests,
@@ -119,7 +96,7 @@ const GuestsFilter: FC<GuestsFilterProps> = ({
                 <SelectItem
                     label="Asistencia al Civil"
                     onChange={changeFilter}
-                    placeholder="Asistencia 16 de Febrero"
+                    placeholder="Asistencia 3 de Noviembre"
                     data={civilAssistanceData}
                     keyName="civilAssistance"
                 />
@@ -128,7 +105,7 @@ const GuestsFilter: FC<GuestsFilterProps> = ({
                 <SelectItem
                     label="Asistencia a la Iglesia y Fiesta"
                     onChange={changeFilter}
-                    placeholder="Asistencia 25 de Febrero"
+                    placeholder="Asistencia 11 de Noviembre"
                     data={partyAssistanceData}
                     keyName="partyAssistance"
                 />
