@@ -29,6 +29,7 @@ interface InputItemProps {
     keyName: ChangeGuest['key']
     style?: CSSProperties
     placeholder?: string
+    password?: boolean
 }
 
 const InputItem: FC<InputItemProps> = ({
@@ -38,6 +39,7 @@ const InputItem: FC<InputItemProps> = ({
     keyName,
     style,
     placeholder,
+    password,
 }): ReactElement => {
     return (
         <ItemContainer style={style}>
@@ -57,6 +59,7 @@ const InputItem: FC<InputItemProps> = ({
                 }
                 placeholder={placeholder}
                 renderValue
+                type={!password ? 'text' : 'password'}
             />
         </ItemContainer>
     )
@@ -68,4 +71,5 @@ InputItem.defaultProps = {
     defaultValue: '',
     style: null,
     placeholder: '',
+    password: false,
 }

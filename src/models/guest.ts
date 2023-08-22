@@ -10,6 +10,7 @@ export interface ChangeGuest {
         | 'partyAssistance'
         | 'menu'
         | 'song'
+        | 'password'
     value: string | CivilAssistance | PartyAssistance | SpecialMenu
 }
 
