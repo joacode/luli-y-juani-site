@@ -85,7 +85,18 @@ const AdminPage = (): ReactElement => {
     return (
         auth && (
             <>
-                <BannerTitle containerStyle={{ marginTop: 0 }} />
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                        paddingTop: '30px',
+                        paddingBottom: '30px',
+                        background: theme.colors.blue.light,
+                    }}
+                >
+                    <BannerTitle containerStyle={{ marginTop: 0 }} />
+                </div>
                 <div
                     style={{
                         width: '100vw',

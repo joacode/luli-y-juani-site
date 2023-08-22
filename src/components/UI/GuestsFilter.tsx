@@ -75,7 +75,7 @@ const GuestsFilter: FC<GuestsFilterProps> = ({
     }
 
     return (
-        <FilterContainer maxWidth="100%">
+        <FilterContainer maxWidth="99%">
             <Container>
                 <InputItem
                     label="Name"
