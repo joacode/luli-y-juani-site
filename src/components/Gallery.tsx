@@ -62,9 +62,9 @@ interface GalleryProps {
 }
 
 const imgConfig = [
-    '4aac6242-c25c-4a03-9473-ec5055af6c43.jpg',
-    '10c9b644-db7c-47a6-b54a-04b8c919af0c.jpg',
-    '93fccf22-475c-4f0f-aacf-82a49f5c26f4.jpg',
+    '4aac6242-c25c-4a03-9473-ec5055af6c43.JPG',
+    '10c9b644-db7c-47a6-b54a-04b8c919af0c.JPG',
+    '93fccf22-475c-4f0f-aacf-82a49f5c26f4.JPG',
     '20151216_194953_Original.jpg',
     'IMG_0856.jpg',
     'IMG_1187.jpg',
