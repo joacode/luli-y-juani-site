@@ -88,6 +88,7 @@ const locationConfig = [
         marginText: '*Recepción civil: Catamarca 724, Acassuso',
         style: { width: '150px' },
         containerStyle: { marginBottom: '90px' },
+        hidden: true,
     },
     {
         title: 'Ceremonia',
@@ -99,6 +100,7 @@ const locationConfig = [
         name: 'Parroquia Niño Jesús de Praga',
         date: '11.11.2023 15:30 hs',
         style: { width: '180px' },
+        hidden: false,
     },
     {
         title: 'Party',
@@ -109,6 +111,7 @@ const locationConfig = [
         location: 'Olivos',
         name: 'Salon del Río',
         date: '11.11.2023 18:00 hs',
+        hidden: false,
     },
 ]
 
@@ -125,67 +128,35 @@ const Events: FC<EventsProps> = ({ events }): ReactElement => {
             <Grid style={{ zIndex: 1 }}>
                 {locationConfig.map(location => {
                     return (
-                        <Box style={location?.containerStyle}>
-                            <BoxTitleContainer>
-                                <Typography
-                                    variant="bannerTitle"
-                                    color={theme.colors.blue.cake}
-                                    style={{
-                                        width: 'fit-content',
-                                        fontSize: 20,
-                                        letterSpacing: '5px',
-                                        fontWeight: 1000,
-                                        marginTop: '15px',
-                                    }}
-                                >
-                                    {location.title.toUpperCase()}
-                                </Typography>
-                            </BoxTitleContainer>
-                            <Typography
-                                style={{
-                                    fontSize: '13px',
-                                    fontWeight: 1000,
-                                    marginLeft: 'auto',
-                                    marginRight: 'auto',
-                                    marginTop: '10px',
-                                    width: '130px',
-                                    textAlign: 'center',
-                                }}
-                            >
-                                {location.date.toUpperCase()}
-                            </Typography>
-                            <Typography
-                                style={{
-                                    fontSize: '13px',
-                                    fontWeight: 500,
-                                    marginLeft: 'auto',
-                                    marginRight: 'auto',
-                                    marginTop: '10px',
-                                    width: 'fit-content',
-                                    textAlign: 'center',
-                                }}
-                            >
-                                {`Dress code: ${location.dressCode}`}
-                            </Typography>
-                            <ImgContainer>
-                                <Img
-                                    src={location.img}
-                                    alt={location.path}
-                                    style={location?.style}
-                                />
-                            </ImgContainer>
-                            <div style={{ marginBottom: 10 }}>
+                        !location.hidden && (
+                            <Box style={location?.containerStyle}>
+                                <BoxTitleContainer>
+                                    <Typography
+                                        variant="bannerTitle"
+                                        color={theme.colors.blue.cake}
+                                        style={{
+                                            width: 'fit-content',
+                                            fontSize: 20,
+                                            letterSpacing: '5px',
+                                            fontWeight: 1000,
+                                            marginTop: '15px',
+                                        }}
+                                    >
+                                        {location.title.toUpperCase()}
+                                    </Typography>
+                                </BoxTitleContainer>
                                 <Typography
                                     style={{
-                                        width: 'fit-content',
                                         fontSize: '13px',
-                                        fontWeight: 800,
+                                        fontWeight: 1000,
                                         marginLeft: 'auto',
                                         marginRight: 'auto',
+                                        marginTop: '10px',
+                                        width: '130px',
+                                        textAlign: 'center',
                                     }}
-                                    variant="italic"
                                 >
-                                    {location.name}
+                                    {location.date.toUpperCase()}
                                 </Typography>
                                 <Typography
                                     style={{
@@ -194,32 +165,20 @@ const Events: FC<EventsProps> = ({ events }): ReactElement => {
                                         marginLeft: 'auto',
                                         marginRight: 'auto',
                                         marginTop: '10px',
-                                        width: '165px',
+                                        width: 'fit-content',
                                         textAlign: 'center',
                                     }}
-                                    variant="italic"
                                 >
-                                    {location.address}
+                                    {`Dress code: ${location.dressCode}`}
                                 </Typography>
-                                <Typography
-                                    style={{
-                                        fontSize: '13px',
-                                        fontWeight: 500,
-                                        marginLeft: 'auto',
-                                        marginRight: 'auto',
-                                        width: '125px',
-                                        textAlign: 'center',
-                                    }}
-                                    variant="italic"
-                                >
-                                    {location.location}
-                                </Typography>
-                                <a
-                                    href={location.path}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    style={{ textDecoration: 'none' }}
-                                >
+                                <ImgContainer>
+                                    <Img
+                                        src={location.img}
+                                        alt={location.path}
+                                        style={location?.style}
+                                    />
+                                </ImgContainer>
+                                <div style={{ marginBottom: 10 }}>
                                     <Typography
                                         style={{
                                             width: 'fit-content',
@@ -227,33 +186,79 @@ const Events: FC<EventsProps> = ({ events }): ReactElement => {
                                             fontWeight: 800,
                                             marginLeft: 'auto',
                                             marginRight: 'auto',
-                                            borderBottom: '1px solid',
-                                            marginTop: 15,
                                         }}
+                                        variant="italic"
                                     >
-                                        VER MAPA
+                                        {location.name}
                                     </Typography>
-                                </a>
-                                {router.pathname === '/guests' &&
-                                    location.marginText && (
+                                    <Typography
+                                        style={{
+                                            fontSize: '13px',
+                                            fontWeight: 500,
+                                            marginLeft: 'auto',
+                                            marginRight: 'auto',
+                                            marginTop: '10px',
+                                            width: '165px',
+                                            textAlign: 'center',
+                                        }}
+                                        variant="italic"
+                                    >
+                                        {location.address}
+                                    </Typography>
+                                    <Typography
+                                        style={{
+                                            fontSize: '13px',
+                                            fontWeight: 500,
+                                            marginLeft: 'auto',
+                                            marginRight: 'auto',
+                                            width: '125px',
+                                            textAlign: 'center',
+                                        }}
+                                        variant="italic"
+                                    >
+                                        {location.location}
+                                    </Typography>
+                                    <a
+                                        href={location.path}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        style={{ textDecoration: 'none' }}
+                                    >
                                         <Typography
                                             style={{
-                                                fontSize: '13px',
-                                                fontWeight: 500,
                                                 width: 'fit-content',
-                                                textAlign: 'center',
-                                                color: 'black',
-                                                position: 'absolute',
-                                                marginTop: '26px',
-                                                marginLeft: '10px',
-                                                opacity: 0.6,
+                                                fontSize: '13px',
+                                                fontWeight: 800,
+                                                marginLeft: 'auto',
+                                                marginRight: 'auto',
+                                                borderBottom: '1px solid',
+                                                marginTop: 15,
                                             }}
                                         >
-                                            {location.marginText}
+                                            VER MAPA
                                         </Typography>
-                                    )}
-                            </div>
-                        </Box>
+                                    </a>
+                                    {router.pathname === '/guests' &&
+                                        location.marginText && (
+                                            <Typography
+                                                style={{
+                                                    fontSize: '13px',
+                                                    fontWeight: 500,
+                                                    width: 'fit-content',
+                                                    textAlign: 'center',
+                                                    color: 'black',
+                                                    position: 'absolute',
+                                                    marginTop: '26px',
+                                                    marginLeft: '10px',
+                                                    opacity: 0.6,
+                                                }}
+                                            >
+                                                {location.marginText}
+                                            </Typography>
+                                        )}
+                                </div>
+                            </Box>
+                        )
                     )
                 })}
             </Grid>

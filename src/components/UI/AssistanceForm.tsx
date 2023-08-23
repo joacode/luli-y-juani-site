@@ -13,7 +13,6 @@ import { CivilAssistance, PartyAssistance } from 'src/models/assistance'
 import { GuestsService } from 'src/services/guestsService'
 import {
     civilAssistanceData,
-    filteredCivilAssistanceData,
     partyAssistanceData,
 } from 'src/constants/assistance'
 import { specialMenu } from 'src/constants/menu'
@@ -118,17 +117,15 @@ const AssistanceForm: FC = (): ReactElement => {
                 />
             </UpperContainer>
             <div>
-                <SelectItem
-                    label="Confirmar asistencia al Civil"
-                    onChange={changeGuest}
-                    placeholder="Asistencia 3 de Noviembre"
-                    data={
-                        router.pathname === '/guests'
-                            ? civilAssistanceData
-                            : filteredCivilAssistanceData
-                    }
-                    keyName="civilAssistance"
-                />
+                {router.pathname === '/guests' && (
+                    <SelectItem
+                        label="Confirmar asistencia al Civil"
+                        onChange={changeGuest}
+                        placeholder="Asistencia 3 de Noviembre"
+                        data={civilAssistanceData}
+                        keyName="civilAssistance"
+                    />
+                )}
                 <SelectItem
                     label="Confirmar asistencia a la Iglesia y Fiesta"
                     onChange={changeGuest}

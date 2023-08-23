@@ -16,14 +16,6 @@ export const civilAssistanceData = [
     { label: 'No voy a poder ir', value: CivilAssistance.DONT },
 ]
 
-export const filteredCivilAssistanceData = [
-    {
-        label: 'Voy al registro',
-        value: CivilAssistance.CEREMONY,
-    },
-    { label: 'No voy a poder ir', value: CivilAssistance.DONT },
-]
-
 export const partyAssistanceData = [
     {
         label: 'Voy a la ceremonia y a la fiesta',
