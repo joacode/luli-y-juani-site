@@ -75,45 +75,6 @@ const ImgContainer = styled.div`
     margin-top: -20px;
     margin-bottom: -10px;
 `
-const locationConfig = [
-    {
-        title: 'Civil',
-        path: 'https://goo.gl/maps/7Nro4d87cpXvUn4Y7',
-        dressCode: 'Smart Casual',
-        img: '/images/heart-test.png',
-        address: 'Av. Centenario 77,',
-        location: 'San Isidro',
-        name: 'Registro civil de San Isidro',
-        date: '03.11.23 13:30 hs',
-        marginText: '*Recepción civil: Catamarca 724, Acassuso',
-        style: { width: '150px' },
-        containerStyle: { marginBottom: '90px' },
-        hidden: true,
-    },
-    {
-        title: 'Ceremonia',
-        path: 'https://goo.gl/maps/AQNc9GyyRAhPqaZr7',
-        dressCode: 'Elegante',
-        img: '/images/rings.png',
-        address: 'Urquiza y Albarellos,',
-        location: 'Acassuso',
-        name: 'Parroquia Niño Jesús de Praga',
-        date: '11.11.2023 15:30 hs',
-        style: { width: '180px' },
-        hidden: false,
-    },
-    {
-        title: 'Party',
-        path: 'https://goo.gl/maps/DBK8KowDvMNRBesx6',
-        dressCode: 'Elegante',
-        img: '/images/partytest.png',
-        address: 'Juan Díaz de Solís 1970,',
-        location: 'Olivos',
-        name: 'Salon del Río',
-        date: '11.11.2023 18:00 hs',
-        hidden: false,
-    },
-]
 
 interface EventsProps {
     events: MutableRefObject<unknown>
@@ -121,6 +82,46 @@ interface EventsProps {
 
 const Events: FC<EventsProps> = ({ events }): ReactElement => {
     const router = useRouter()
+
+    const locationConfig = [
+        {
+            title: 'Civil',
+            path: 'https://goo.gl/maps/7Nro4d87cpXvUn4Y7',
+            dressCode: 'Smart Casual',
+            img: '/images/heart-test.png',
+            address: 'Av. Centenario 77,',
+            location: 'San Isidro',
+            name: 'Registro civil de San Isidro',
+            date: '03.11.23 13:30 hs',
+            marginText: '*Recepción civil: Catamarca 724, Acassuso',
+            style: { width: '150px' },
+            containerStyle: { marginBottom: '90px' },
+            hidden: router.pathname !== '/guests',
+        },
+        {
+            title: 'Ceremonia',
+            path: 'https://goo.gl/maps/AQNc9GyyRAhPqaZr7',
+            dressCode: 'Elegante',
+            img: '/images/rings.png',
+            address: 'Urquiza y Albarellos,',
+            location: 'Acassuso',
+            name: 'Parroquia Niño Jesús de Praga',
+            date: '11.11.2023 15:30 hs',
+            style: { width: '180px' },
+            hidden: false,
+        },
+        {
+            title: 'Party',
+            path: 'https://goo.gl/maps/DBK8KowDvMNRBesx6',
+            dressCode: 'Elegante',
+            img: '/images/partytest.png',
+            address: 'Juan Díaz de Solís 1970,',
+            location: 'Olivos',
+            name: 'Salon del Río',
+            date: '11.11.2023 18:00 hs',
+            hidden: false,
+        },
+    ]
     return (
         <Container ref={events}>
             <FlowersBackground upper />
