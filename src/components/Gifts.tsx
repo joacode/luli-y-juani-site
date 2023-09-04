@@ -96,7 +96,7 @@ const Gifts: FC<GiftsProps> = ({ gifts }): ReactElement => {
                     <Modal.Body>
                         <Typography variant="gifts">
                             Podes acercarnos tu regalo en un sobre cuando
-                            quieras o el día de la ceremonia
+                            quieras o el día de la ceremonia.
                         </Typography>
                         <Typography variant="gifts">
                             Si estás full bancarizado, te dejamos los datos de
