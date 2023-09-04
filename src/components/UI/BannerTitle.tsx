@@ -9,10 +9,16 @@ const Container = styled.div`
     z-index: 2;
     height: fit-content;
     width: fit-content;
-    display: block;
-    justify-content: center;
+    // display: block;
+    // justify-content: center;
     align-content: center;
-    // margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 100%;
+    height: 70%;
 `
 
 const BannerTypography = styled(Typography)`
@@ -51,12 +57,28 @@ const BannerTitle: FC<{
                 style={{
                     fontFamily: `Amelia_Giovani`,
                     marginTop: '30px',
+                    marginBottom: '30px',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
                     width: isDesktop ? 'initial' : 'min-content',
                     textAlign: isDesktop ? 'initial' : 'center',
                 }}
             >
                 Juani & Luli
             </Typography>
+            <BannerTypography
+                color={theme.colors.black}
+                style={{
+                    maxWidth: '80%',
+                    textAlign: 'center',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    letterSpacing: '0.3rem',
+                    fontSize: 20,
+                }}
+            >
+                ¡Y QUEREMOS QUE NOS ACOMPAÑES!
+            </BannerTypography>
         </Container>
     )
 }
