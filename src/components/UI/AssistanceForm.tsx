@@ -53,6 +53,12 @@ const AssistanceForm: FC = (): ReactElement => {
         song: '',
     })
 
+    const hasCivilField = router?.pathname === '/guests'
+
+    const civilValidation = hasCivilField
+        ? guest?.civilAssistance !== CivilAssistance.EMPTY
+        : true
+
     const changeGuest = (
         key: ChangeGuest['key'],
         value: ChangeGuest['value']
@@ -71,7 +77,7 @@ const AssistanceForm: FC = (): ReactElement => {
         if (
             guest?.name !== '' &&
             guest?.lastName !== '' &&
-            guest?.civilAssistance !== CivilAssistance.EMPTY &&
+            civilValidation &&
             guest?.partyAssistance !== PartyAssistance.EMPTY &&
             guest?.menu !== SpecialMenu.EMPTY
         ) {
